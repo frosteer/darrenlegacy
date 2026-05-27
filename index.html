@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="description" content="专门帮有孩子的家庭规划真正适合自己的保障 — Darren Chow">
+<title>Darren Chow | 小家庭大保障</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:     #3d7a3d;
+  --green-dk:  #2b5a2b;
+  --green-bg:  #edf4ed;
+  --orange:    #c0622a;
+  --orange-bg: #fdf0e8;
+  --blue:      #2b5c8c;
+  --blue-bg:   #e8f0f8;
+  --text:      #1e1e1e;
+  --muted:     #666;
+  --border:    #e2ddd5;
+  --offwhite:  #f6f3ee;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  color: var(--text);
+  background: #fff;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── HERO IMAGE ── */
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── SECTION SHELL ── */
+.sec     { padding: 26px 16px; }
+.sec-alt { padding: 26px 16px; background: var(--offwhite); }
+.sec-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.sec-title::before,
+.sec-title::after { content: '—'; color: #bbb; font-weight: 400; }
+.sec-title .ul { text-decoration: underline; color: var(--green); }
+
+/* ── CARDS ── */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+/* round icon on the left */
+.card-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.ic-g { background: var(--green-bg); }
+.ic-o { background: var(--orange-bg); }
+.ic-b { background: var(--blue-bg); }
+
+/* two-column body: text left, illustration+button right */
+.card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.card-left { flex: 1; min-width: 0; }
+.card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.card-eyebrow {
+  font-size: 11px; font-weight: 600;
+  color: #999; letter-spacing: .3px;
+  margin-bottom: 1px;
+}
+.card-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.card-list  { list-style: none; margin-bottom: 0; }
+.card-list li {
+  font-size: 12px; color: #555;
+  padding: 2px 0;
+  display: flex; align-items: flex-start; gap: 6px;
+}
+.card-list li::before {
+  content: '✓';
+  color: var(--green); font-weight: 700; font-size: 11px;
+  margin-top: 2px; flex-shrink: 0;
+}
+.card-desc { font-size: 12px; color: #555; line-height: 1.75; }
+
+/* illustration box in the card (replace with <img> if you have one) */
+.card-illust {
+  width: 76px; height: 68px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+}
+.ill-g { background: linear-gradient(135deg, #d4e8d4, #b8d8b8); }
+.ill-o { background: linear-gradient(135deg, #f5dcc8, #e8c4a0); }
+.ill-b { background: linear-gradient(135deg, #c8d8f0, #a8c4e8); }
+.card-illust img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+
+/* ── IMAGE OVERLAYS ── */
+.help-wrap { position: relative; }
+.help-wrap img { width: 100%; display: block; }
+.ov {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  background: rgba(0,0,0,0.001); /* forces paint layer for reliable tap */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── RISK ITEMS ── */
+.risk-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.04);
+  overflow: hidden;
+  display: flex;
+}
+.risk-left {
+  flex: 1;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.risk-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.risk-ico { font-size: 28px; line-height: 1; }
+.risk-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.rn-g { background: var(--green); }
+.rn-o { background: var(--orange); }
+.risk-title { font-size: 14px; font-weight: 700; flex: 1; }
+.risk-desc  { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 10px; }
+.risk-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 1.5px solid var(--green);
+  color: var(--green);
+  align-self: flex-start;
+}
+.risk-tag.ot { border-color: var(--orange); color: var(--orange); }
+
+/* photo on right of risk item (replace div with <img> if you have one) */
+.risk-photo {
+  width: 100px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+}
+.rp-sunset { background: linear-gradient(160deg, #f5d090 0%, #e8a060 60%, #c87040 100%); }
+.rp-heart  { background: linear-gradient(160deg, #f5c0c0 0%, #e89090 60%, #d06060 100%); }
+.risk-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ── SIMPLE SECTION ── */
+.simple-cols {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #fff;
+}
+.simple-col {
+  flex: 1;
+  padding: 16px 10px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.simple-col:last-child { border-right: none; }
+.sc-num {
+  width: 20px; height: 20px;
+  background: var(--green);
+  border-radius: 50%;
+  color: #fff; font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 4px;
+}
+.sc-ico  { font-size: 22px; }
+.sc-main { font-size: 12px; font-weight: 700; }
+.sc-sub  { font-size: 11px; color: var(--muted); }
+
+.simple-note {
+  background: var(--green-bg);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 13px; color: var(--text);
+  text-align: center; line-height: 1.9;
+}
+.simple-note strong { color: var(--green-dk); font-weight: 800; }
+
+/* ── CTA ── */
+.cta {
+  background: var(--green-bg);
+  padding: 30px 18px 34px;
+  text-align: center;
+}
+.cta-top { font-size: 13px; color: #555; line-height: 1.9; margin-bottom: 4px; }
+.cta-sub { font-size: 13px; color: #555; margin-bottom: 20px; }
+.btn-cta {
+  background: var(--green);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 16px; font-weight: 700;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 4px;
+  box-shadow: 0 4px 14px rgba(45,90,45,.25);
+}
+.btn-cta::after { content: ' ›'; font-size: 20px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--green-dk);
+  color: #fff;
+  text-align: center;
+  padding: 16px 18px;
+  margin-top: 32px;
+}
+.ft-url {
+  font-size: 13px;
+  opacity: .7;
+  margin-bottom: 8px;
+  letter-spacing: .3px;
+}
+.ft-links {
+  font-size: 11px;
+  opacity: .5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+.ft-sep {
+  opacity: .4;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO IMAGE — save your image as hero.jpg in this same folder -->
+<img src="hero-new.png" alt="Darren Chow | 专门帮有孩子的家庭规划真正适合自己的保障" class="hero-img">
+
+<!-- HOW I HELP -->
+<section class="sec" style="padding-bottom:0;">
+  <div class="sec-title">我能帮助你</div>
+</section>
+<div class="help-wrap">
+  <img src="help-option.png" alt="我能帮助你">
+  <!-- 领取指南: y=538–635 / 1983px -->
+  <a href="https://wa.link/yim0hy" class="ov" style="top:25%;bottom:66%;left:9%;right:9%;" target="_blank" rel="noopener"></a>
+  <!-- 开始规划: y=1151–1249 / 1983px -->
+  <a href="https://wa.link/5jm3l4" class="ov" style="top:56%;bottom:35%;left:9%;right:9%;" target="_blank" rel="noopener"></a>
+  <!-- 重新整理: y=1779–1876 / 1983px -->
+  <a href="https://wa.link/kjsn15" class="ov" style="top:88%;bottom:4%;left:9%;right:9%;" target="_blank" rel="noopener"></a>
+</div>
+
+<!-- QUESTION — cropped to half whitespace (110px top, 114px bottom of 1024px) -->
+<div style="position:relative;overflow:hidden;aspect-ratio:1536/800;">
+  <img src="question.png" alt="有保险问题想问？" style="position:absolute;width:100%;top:50%;transform:translateY(-50%);">
+  <!-- 我想找 Darren 询问: y=600–786 / 1024px (in cropped 800px container) -->
+  <a href="https://wa.link/nkcwd8" class="ov" style="top:60%;bottom:14%;left:23%;right:5%;" target="_blank" rel="noopener"></a>
+</div>
+
+<!-- TWO RISKS -->
+<div style="position:relative;">
+  <img src="service-option-new.png" alt="我主要帮助家庭处理这两种风险" class="hero-img">
+  <!-- 人寿保障: y=683–716 / 1536px -->
+  <a href="https://wa.link/2shphj" class="ov" style="top:42%;bottom:51%;left:13%;right:9%;" target="_blank" rel="noopener"></a>
+  <!-- 重疾保障: y=1292–1369 / 1536px -->
+  <a href="https://wa.link/193or0" class="ov" style="top:82%;bottom:8%;left:13%;right:9%;" target="_blank" rel="noopener"></a>
+</div>
+
+<!-- MY WORK IS SIMPLE -->
+<img src="job-option.png" alt="我的工作其实很简单" class="hero-img">
+
+<!-- CTA -->
+<div style="position:relative; overflow:hidden; aspect-ratio:1855/520;">
+  <img src="download-option.png" alt="免费领取规划指南" style="position:absolute; width:100%; top:50%; transform:translateY(-50%);">
+  <!-- 免费领取规划指南: y=328–580 / 848px (in cropped 520px container) -->
+  <a href="https://wa.link/yim0hy" class="ov" style="top:5%;bottom:5%;left:63%;right:3%;" target="_blank" rel="noopener"></a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-url">wonderlegacy.com</div>
+  <div class="ft-links">
+    <span>人寿保障</span>
+    <span class="ft-sep">|</span>
+    <span>重疾保障</span>
+    <span class="ft-sep">|</span>
+    <span>传承规划</span>
+  </div>
+</footer>
+
+</body>
+</html>
